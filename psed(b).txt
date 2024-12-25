@@ -1,0 +1,787 @@
+
+
+
+-----tree
+var createScene = function () {
+var scene = new BABYLON.Scene(engine);
+var camera = new BABYLON. FreeCamera("camera1", new BABYLON. Vector3(0.5, 2, -1
+camera.setTarget(new BABYLON.Vector3(0, 0, 0));
+
+var light = new BABYLON. HemisphericLight("AmbientLight", new BABYLON. Vector3(
+light.intensity = 1.0;
+
+var red = new BABYLON.StandardMaterial("red", scene);
+red.diffuseColor = new BABYLON.Color3(1, 0, 0);
+var blue = new BABYLON. StandardMaterial("blue", scene);
+blue. diffuseColor = new BABYLON.Color3(0, 0, 1);
+
+var cylinder = BABYLON.MeshBuilder.CreateCylinder("cylinder", {height: 3.5, d:
+var cone = BABYLON.MeshBuilder. CreateCylinder("cone", {height:2, diameterTop:
+
+cylinder.rotation = new BABYLON.Vector3(0, 0, Math.PI/2);
+cone.rotation = new BABYLON.Vector3(0, 0, Math.PI/2);
+cone.position = new BABYLON.Vector3(-2.5, 0, 0);
+
+cylinder.material = blue;
+cone.material = red;
+
+return scene;
+
+};
+
+----egg
+
+var createScene = function ()
+var scene = new BABYLON.Scene(engine);
+var camera = new BABYLON. FreeCamera("camera1", new BABYLON. Vector3(0.5, 2, -8
+camera.setTarget(new BABYLON.Vector3(0, 0, 0));
+
+var light = new BABYLON. HemisphericLight("AmbientLight", new BABYLON. Vector3(
+light.intensity = 1.0;
+
+var gray = new BABYLON. StandardMaterial("gray", scene);
+gray.diffuseColor = new BABYLON.Color3 (0.85, 0.85, 0.85);
+
+var top = BABYLON.MeshBuilder.CreateSphere("top", {diameter: 2, slice: 0.5},
+var bottom = BABYLON.MeshBuilder.CreateSphere("bottom", {diameter: 2, slice:
+
+bottom.rotation = new BABYLON.Vector3(0, 0, Math.PI);
+top.scaling = new BABYLON.Vector3(1, 1.5, 1);
+
+var egg = BABYLON.Mesh.MergeMeshes([top, bottom], true);
+egg.material = gray;
+
+scene.clearColor = new BABYLON.Color3(0, 0.87, 1);
+return scene;
+---- ()
+vvar createscene = function () {
+var scene = new BABYLON.Scene(engine);
+var camera = new BABYLON.FreeCamera("camera1", new BABYLON. Vector3(0, 2, -8),
+camera.setTarget(new BABYLON.Vector3(0, 0, 0));
+
+var light = new BABYLON.HemisphericLight("AmbientLight", new BABYLON.Vector3(
+light.intensity = 1.0;
+
+var blue = new BABYLON. StandardMaterial("blue", scene);
+blue.diffuseColor = new BABYLON.Color3(0, 0, 1);
+var yellow = new BABYLON.StandardMaterial("yellow", scene);
+yellow.diffuseColor = new BABYLON.Color3(1, 1, 0);
+
+var top = BABYLON.MeshBuilder.CreateSphere("top", {diameter: 3, slice: 0.35},
+var bottom = BABYLON.MeshBuilder.CreateSphere("bottom", {diameter: 3, slice:
+var cylinder = BABYLON.MeshBuilder.CreateCylinder("cylinder", {height: 3, di
+
+top.position = new BABYLON.Vector3(0, -2.3"0.3, 0);
+bottom.rotation = new BABYLON.Vector3(0, 0, Math.PI);
+bottom.position = new BABYLON.Vector3(0, 2.3*0.3, 0);
+cylinder.rotation = new BABYLON.Vector3(Math.PI/2, 0, 0);
+cylinder.scaling = new BABYLON.Vector3(1.2, 1, 1);
+
+var objectShape = new BABYLON.Mesh.MergeMeshes([top, bottom], true);
+
+shapeCSG = new BABYLON.CSG. FromMesh(objectShape);
+cylinderCSG = new BABYLON.ESG.FromMesh(cylinder);
+result = shapeCSG.subtract(cylinderCSG);
+finalShape = result.toMesh("eye", new BABYLON. StandardMaterial("placeholder"
+
+objectShape.dispose();
+cylinder.dispose()
+finalShape.material = yellow;
+
+return scene;
+----------crismas-----
+var scene = new DADTLON.Scenetengine),
+var camera - new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 0.1,
+camera.setTarget(new BABYLON.Vector3(0, 0, 0));
+
+var light = new BABYLON.Hemisphericlight("AmbientLight", new BABYLON.Vector
+light.intensity = 0.8;
+
+var red - new BABYLON.StandardMaterial("red", scene);
+var yellow - new BABYLON.StandardMaterial("yellow", scene);
+red.diffuseColor = new BABYLON.Color3 (1, 0, 0);
+yellow.diffuseColor - new BABYLON.Color3(1, 1, 0);
+
+var preface = new BABYLON.CreateSphere("preface", {diameter: 1}, scene);
+var el = new BABYLON.CreateCylinder("el", {diameter: 0.18}, scene);
+var e2 - new BABYLON.CreateCylinder("e2", (diameter: 0.18}, scene);
+var body - new BABYLON.CreateSphere("body", (diameter: 1.5), scene);
+var cone - new BABYLON.CreateCylinder("cone", {height: 1.5, diameterTop: 0,
+var nose = new BABYLON.CreateCylinder("nose", {diameterTop: 0, diameterBott
+
+e1.position - new BABYLON.Vector3(0.2, 0.5, 0);
+e2.position - new BABYLON.Vector3(-0.2, 0.5, 0);
+
+var preeyes - new BABYLON.Mesh.MergeMeshes([e1, e2], true);
+preeyes.rotation.x - Math.PI/2;
+
+var faceCSG = new BABYLON.CSG.FromMesh(preface);
+var eyesCSG = new BABYLON.ESG. FromMesh(preeyes);
+result = faceCSG.subtract(eyesCSG);
+var face - result.toMesh("face", new BABYLON.StandardMaterial("placeholder"
+preface.dispose();
+preeyes.dispose();
+face.scaling.x = 1.5;
+face.material - yellow;
+
+body.position.y = -1;
+body.material = red;
+
+cone.position.y - 1;
+cone.material = red;
+
+nose.rotation.x = -Math.PI/2;
+nose.position - new BABYLON.Vector3(0, -0.1, -0.9);
+nose.material - red;
+------BALL SERIES
+const a = new BABYLON.Vector3(-200, 0, 200);
+const b = new BABYLON.Vector3(200, 0, -200);
+const radius = 5;
+
+for (var i = 0; i < 10; i++) {
+const positions = new BABYLON.Vector3.Lerp(a, b, i / (10-1));
+var sphere = BABYLON.MeshBuilder.Createsphere("sphere" + {i}, { diameter: 2 * radiu
+sphere.position = positions;
+
+var blue = new BABYLON.StandardMaterial("material" +{i} , scene);
+blue.diffuseColor = new BABYLON.Color3 (0, 0, 1); // Blue color
+sphere.material = blue;
+--------BALL CLOCK
+var createScene = function () {
+var scene = new BABYLON. Scene(engine);
+var camera = new BABYLON. FreeCamera("camera1", new BABYLON.Vector3(0, 0, -600
+camera.attachControl(canvas, true);
+camera.setTarget(new BABYLON.Vector3(0, 0, 0));
+
+var light = new BABYLON. HemisphericLight("AmbientLight", new BABYLON. Vector3(
+light.intensity = 0.8;
+
+var red = new BABYLON. StandardMaterial("red", scene);
+red.diffuseColor = new BABYLON.Color3(1, 0, 0);
+
+sphereCount = 20;
+const circle = BABYLON.MeshBuilder. CreateDisc("circle", {radius: 200}, scene)
+
+for(var i = 0; i <= sphereCount; i++) {
+angle = i/sphereCount * 2*Math.PI;
+x = 200 * Math.cos(angle);
+y = 200 * Math.sin(angle);
+
+var sphere = BABYLON.MeshBuilder.CreateSphere("sphere"+i, [diameter: hep,
+sphere.position = new BABYLON.Vector3(x, y, 0);
+sphere.material = red;
+
+return scene;
+--------CUBE CONE----
+var cube = BABYLON.MeshBuilder.CreateBox("cube", {size: 100}, scene);
+cube.position = new BABYLON.Vector3(0, 0, 0);
+cube.material = red;
+
+var corners
+=
+new BABYLON.Vector3(50, 50, -50), new BABYLON.Vector3(50, -50, -50),
+new BABYLON.Vector3(-50, -50, -50), new BABYLON.Vector3(-50, 50, -50),
+new BABYLON.Vector3(50, 50, 50), new BABYLON.Vector3(50, -50, 50),
+new BABYLON.Vector3(-50, -50, 50), new BABYLON.Vector3(-50, 50, 50),
+
+corners.forEach((corner, index) => {
+var cone = BABYLON.MeshBuilder.CreateCylinder("cone"+index, {diameterTop:
+cone.material = blue;
+direction = corner.subtract(new BABYLON.Vector3.Zero()).normalize();
+cone.lookAt(direction);
+cone.position = corner;
+cone.rotate(BABYLON.Axis.X, Math.PI/2, BABYLON.Space.LOCAL);
+---* CUBE WITHOUT CONE
+var corners = [
+new BABYLON.Vector3(50, 50, -50), new BABYLON.Vector3(50, -50, -50),
+new BABYLON.Vector3(-50, -50, -50), new BABYLON.Vector3(-50, 50, -50),
+new BABYLON.Vector3(50, 50, 50), new BABYLON.Vector3(50, -50, 50),
+BABYLON.Vector3(-50, -50, 50), new BABYLON.Vector3(-50, 50, 50),
+
+corners.forEach((corner, index) => {
+var cone = BABYLON.MeshBuilder.CreateCylinder("cone"+index, {diameterTor
+cone.material = blue;
+
+cone.lookAt(corner);
+cone.position = corner;
+cone.rotate(BABYLON.Axis.X, -Math.PI/2, BABYLON.Space.LOCAL);
+
+var coneCSG = BABYLON.CSG.FromMesh(cone);
+cubeCSG = cubeCSG.subtract(coneCSG);
+cone.dispose();
+});
+
+var finalShape = cubeCSG.toMesh("finalShape", red, scene);
+cube.dispose();
+--------CLOCK
+var createScene = function () {
+    var scene = new BABYLON.Scene(engine);
+    var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 0, -10), scene);
+    camera.attachControl(canvas, true);
+    camera.setTarget(new BABYLON.Vector3(0, 0, 0));
+
+    var light = new BABYLON.HemisphericLight("AmbientLight", new BABYLON.Vector3(2, 0, -10), scene);
+    light.intensity = 0.5;
+
+    var lightblue = new BABYLON.StandardMaterial("lightblue", scene);
+    lightblue.diffuseColor =  new BABYLON.Color3(0, 1, 1);
+    var green = new BABYLON.StandardMaterial("green", scene);
+    green.diffuseColor =  new BABYLON.Color3(0, 1, 0);
+    var yellow = new BABYLON.StandardMaterial("yellow", scene);
+    yellow.diffuseColor =  new BABYLON.Color3(1, 1, 0);
+    var blue = new BABYLON.StandardMaterial("blue", scene);
+    blue.diffuseColor =  new BABYLON.Color3(0, 0, 1);
+    var purple = new BABYLON.StandardMaterial("purple", scene);
+    purple.diffuseColor =  new BABYLON.Color3(1, 0, 1);
+    var offwhite = new BABYLON.StandardMaterial("offwhite", scene);
+    offwhite.diffuseColor =  new BABYLON.Color3(0.98, 0.9, 0.89);
+    
+    var clock = BABYLON.MeshBuilder.CreateTorus("clock", {diameter: 8, tessellation: 64, thickness:0.3}, scene);
+    var hour = BABYLON.MeshBuilder.CreateCylinder("hour", {diameter: 0.2, height: 1.25}, scene);
+    var minute = BABYLON.MeshBuilder.CreateCylinder("minute", {diameter: 0.2, height: 2}, scene);
+    var center = BABYLON.MeshBuilder.CreateSphere("center", {diameter: 0.4}, scene);
+    var disk = BABYLON.MeshBuilder.CreateDisc("background", {radius: 4}, scene);
+
+    for (var i = 0; i < 12; i++) { 
+        angle = i/12 * 2*Math.PI;
+        x = 3*Math.cos(angle);
+        y = 3*Math.sin(angle);
+
+        var cylin = BABYLON.CreateCylinder("cylin"+i, {height: 1, diameter:0.2}, scene);
+        cylin.rotation.z = Math.PI /2 + angle;
+        cylin.position = new BABYLON.Vector3(x, y, 0);
+        cylin.material = green;
+    }
+
+    clock.rotation.x = Math.PI/2;
+    hour.position.y = 1.25/2;
+    minute.position.y = 1;
+    hour.setPivotPoint(new BABYLON.Vector3(0, -1.25/2, 0));
+    minute.setPivotPoint(new BABYLON.Vector3(0, -1, 0));
+
+    clock.material = yellow;
+    hour.material = blue;
+    minute.material = lightblue;
+    center.material = purple;
+    disk.material = offwhite;
+
+    scene.registerBeforeRender(() => {
+        hour.rotation.z -= 0.001;
+        minute.rotation.z -= 12*0.001;
+    });
+    return scene;
+};
+--------stairs
+var center = new BABYLON.CreateCylinder("center",{height:7,diameter:1},scene);
+    var staircount = 6
+    
+    var y =-1
+    for(var i =0 ; i <staircount;i++ )
+    { 
+         var angle  = i/6*(2*Math.PI)
+        var stair = new BABYLON.CreateBox("stair",{height:0.3,width:2},scene);
+        stair.position.x =-1.8*Math.cos(angle)
+        stair.position.z = 1.8*Math.sin(angle)
+        stair.position.y =y
+        stair.rotation.y = angle 
+        angle +=(2*Math.PI)/6
+        y+=0.6
+    } 
+-----any  ground 
+ for(let i = 0  ; i < 50 ; i++){
+        for(let j = 0 ; j < 50; j++){
+            let box = BABYLON.CreateBox("box",{size : 1 , depth:  0.1});
+            box.material = (i+j)%2== 0 ? black : white;
+            box.position.x = (i-4)+0.5;
+            box.position.z = (j-4)+0.5;
+            box.rotation.x = Math.PI/2;
+        }
+    }
+----cup
+var plate = BABYLON.MeshBuilder.CreateCylinder("plate", {diameter: 10, height:1,}, scene);
+    plate.material=bluematerial;
+    var cup = BABYLON.MeshBuilder.CreateSphere("cup", {diameter: 8,slice:0.5}, scene);
+    cup.rotation.z=Math.PI
+    cup.position.y=4.5
+    var cutter = BABYLON.CreateSphere("cutter",{diameter:7.5,slice:0.5},scene)
+    cutter.rotation.z=Math.PI
+    cutter.position.y=4.25
+    var lowerCSG = BABYLON.CSG.FromMesh(cup);
+    var cutterCSG = BABYLON.CSG.FromMesh(cutter);
+    var lowercutted = lowerCSG.subtract(cutterCSG);
+    var lowercuttedResult = lowercutted.toMesh();
+    lowercuttedResult.material=redmaterial
+    cup.dispose();
+    cutter.dispose();
+    var hand = BABYLON.MeshBuilder.CreateTorus("hand", {diameter: 2,}, scene);
+    hand.position.y=3
+    hand.position.z=-4
+    hand.rotation.z=-Math.PI/2
+    hand.material=redmaterial
+    return scene;
+-----chemistry
+ var box = BABYLON.MeshBuilder.CreateBox("sphere", {size:2}, scene);
+
+    // Move the sphere upward 1/2 its height
+    box.position.y = 1;
+
+    // Our built-in 'ground' shape.
+    var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 10, height: 10}, scene);
+    var orbit1 = BABYLON.MeshBuilder.CreateTorus("orbit1", {diameter:13, thickness:0.4,tessellation:32}, scene);
+    orbit1.rotation.z=Math.PI/2
+    var orbit2 = BABYLON.MeshBuilder.CreateTorus("orbit2", {diameter:13, thickness:0.4,tessellation:32}, scene);
+    return scene;
+----طرح 3 مربعات
+  var box1 = new BABYLON.CreateBox("box1",{height:2,width:6,depth:2},scene)
+    var box2 =new BABYLON.CreateBox("box2",{height:6,width:2,depth:2},scene)
+    var box3= new BABYLON.CreateBox("box3",{height:2,width:2,depth:6},scene)
+    var cly1 =new BABYLON.CreateCylinder("cly1",{height:6,diameter:1},scene)
+    cly1.rotation.x=Math.PI/2
+    var cly2 =new BABYLON.CreateCylinder("cly2",{height:4.5,diameter:1},scene)
+    cly2.rotation.z=Math.PI/2
+    cly2.position.y=2
+    var cly3=new BABYLON.CreateCylinder("cly3",{height:4.5,diameter:1},scene)
+    cly3.rotation.x=Math.PI/2
+    cly3.position.y=2
+    var box3csg = BABYLON.CSG.FromMesh(box3)
+    var cly1csg = BABYLON.CSG.FromMesh(cly1)
+    var hollow = box3csg.subtract(cly1csg)
+    var result = hollow.toMesh();
+    box3.dispose()
+    cly1.dispose()
+    return scene;
+};
+---man y5d
+ var  cly1 = new BABYLON.CreateCylinder("cly1",{diameter:2,height:6 },scene)
+    cly1.position.y= 3
+
+    var  cly2 =new BABYLON.CreateCylinder("cly2",{diameter:2,height:6 },scene)
+    cly2.position.z=6
+    cly2.position.y= 3
+
+    var  cly3 =new BABYLON.CreateCylinder("cly2",{diameter:2,height:6 },scene)
+    cly3.position.x= 7
+    cly3.position.y= 0.9
+
+    cly3.rotation.z = Math.PI/2
+    var  cly4=new BABYLON.CreateCylinder("cly2",{diameter:2,height:6 },scene)
+    cly4.position.x= 7
+    cly4.position.y= 0.9
+
+    cly4.position.z=6 
+    cly4.rotation.z = Math.PI/2
+    var  cly5 =new BABYLON.CreateCylinder("cly2",{diameter:2,height:7 },scene)
+    cly5.position.x= 5.4
+    cly5.position.y=2.8
+    cly5.rotation.z  = -Math.PI/4
+
+    var  cly6 =new BABYLON.CreateCylinder("cly2",{diameter:2,height:7 },scene)
+    cly6.position.x= 5.4
+    cly6.position.z= 6
+    cly6.position.y= 2.8
+    cly6.rotation.z  = -Math.PI/4
+
+
+    var  cly7 =new BABYLON.CreateCylinder("cly2",{diameter:5,height:10 },scene)
+    cly7.position.y= 6
+    cly7.position.z=3
+    cly7.position.x= 3
+    cly7.rotation.z= Math.PI/2
+    var head = BABYLON.CreateSphere("sphere", {diameter :5},scene)
+    head.position.y=4.8
+    head.position.x=-4
+    head.position.z=3
+
+
+
+    return scene;
+};
+-----android
+ar body = BABYLON.CreateCylinder("body",{height:7 ,diameter:7},scene)
+    body.position.y= 7
+    body.material = greanmaterial
+    var bodyu = BABYLON.CreateSphere("body",{ diameter:11.8,slice: 0.2 },scene)
+    bodyu.rotation.x=Math.PI 
+    bodyu.position.y=8.3
+    bodyu.material = greanmaterial 
+
+    var leg1 = BABYLON.CreateCylinder("rightleg",{height:8 ,diameter:1.5,},scene)
+    leg1.position.x=2
+    leg1.material = greanmaterial
+    var leg2 = BABYLON.CreateCylinder("leftleg",{height:4 ,diameter:1.5,},scene)
+    leg2.position.x=-2
+    leg2.position.y=2
+    leg2.rotation.x=Math.PI/4
+    leg2.material = greanmaterial
+    var legsp = BABYLON.CreateSphere("leftleg",{diameter:1.5,slice:0.5},scene)
+    legsp.rotation.x=Math.PI +Math.PI/4
+    legsp.position.x=-2
+    legsp.position.y=0.6
+    legsp.position.z=-1.4
+    legsp.material = greanmaterial
+    var head =BABYLON.CreateSphere("head",{diameter:7, slice:0.5},scene)
+    head.position.y= 10.7
+    head.material = greanmaterial
+    var hand1 = BABYLON.CreateCylinder("righthand",{height:4 ,diameter:1.5,},scene)
+    hand1.position.x=5.9
+    hand1.position.y=10.5
+    hand1.rotation.z=-Math.PI/4
+    hand1.rotation.x=-Math.PI/4
+    hand1.material = greanmaterial
+    var handsp1u = BABYLON.CreateSphere("righthand1su",{diameter:1.5,slice:0.5},scene)
+    handsp1u.rotation.x=-Math.PI/4
+    handsp1u.position.x=7.3
+    handsp1u.position.z=-1
+    handsp1u.position.y=11.5
+    handsp1u.rotation.z=-Math.PI/4
+    handsp1u.material = greanmaterial
+
+    var hand2 = BABYLON.CreateCylinder("lefthand",{height:4 ,diameter:1.5,},scene)
+    hand2.position.x=-5.9
+    hand2.position.y=10.5
+    hand2.rotation.z=Math.PI/4
+    hand2.rotation.x=-Math.PI/4
+    hand2.material = greanmaterial
+    var handsp2u = BABYLON.CreateSphere("lefthand2su",{diameter:1.5,slice:0.5},scene)
+    handsp2u.rotation.x=-Math.PI/4
+    handsp2u.position.x=-7.3
+    handsp2u.position.z=-1
+    handsp2u.position.y=11.5
+    handsp2u.rotation.z=Math.PI/4
+    handsp2u.material = greanmaterial
+
+    var eye1 = BABYLON.CreateSphere("righteye",{diameter:0.5},scene)
+    eye1.rotation.x=-Math.PI/4
+    eye1.position.x=1.5
+    eye1.position.z=-2.5
+    eye1.position.y=12.5
+    eye1.rotation.z=Math.PI/4
+    eye1.material = blackMaterial
+    var eye2 = BABYLON.CreateSphere("righteye",{diameter:0.5},scene)
+    eye2.rotation.x=-Math.PI/4
+    eye2.position.x=-1.5
+    eye2.position.z=-2.5
+    eye2.position.y=12.5
+    eye2.rotation.z=Math.PI/4
+    eye2.material = blackMaterial
+    var ear1 = BABYLON.CreateCylinder("rightear",{height:4 ,diameter:0.2,},scene)
+    ear1.rotation.z=-Math.PI/4
+    ear1.position.x=1.5
+    ear1.position.y=14
+    ear1.material = greanmaterial
+    var ear2 = BABYLON.CreateCylinder("lefttear",{height:4 ,diameter:0.2,},scene)
+    ear2.rotation.z=Math.PI/4
+    ear2.position.x=-1.5
+    ear2.position.y=14
+    ear2.material = greanmaterial
+
+----slsla
+var createScene = function () {
+    // This creates a basic Babylon Scene object (non-mesh)
+    var scene = new BABYLON.Scene(engine);
+
+    // This creates and positions a free camera (non-mesh)
+     var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0,0, -25), scene);
+    // This targets the camera to scene origin
+    camera.setTarget(BABYLON.Vector3.Zero());
+
+    // This attaches the camera to the canvas
+    camera.attachControl(canvas, true);
+
+    // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
+    var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+
+    // Default intensity is 1. Let's dim the light a small amount
+    light.intensity = 0.7;
+
+    var pillar1 = BABYLON.CreateCylinder("rightpiller",{height:10 , diameter: 2,tessellation:50},scene)
+    pillar1.position.x= 4
+    var pillar2 = BABYLON.CreateCylinder("leftpiller",{height:10 , diameter: 2,tessellation:50},scene) 
+    pillar2.position.x= -4
+    var top = BABYLON.CreateTorus("top",{ diameter: 8 ,thickness:2,tessellation:50 },scene)
+    top.rotation.z= Math.PI/2
+    top.rotation.y= Math.PI/2
+    top.position.y= 5
+    var bottom = BABYLON.CreateTorus("bottom",{ diameter: 8 ,thickness:2,tessellation:50 } ,scene) 
+    bottom.rotation.z= Math.PI/2
+    bottom.rotation.y= Math.PI/2
+    bottom.position.y= -5
+    var cutter = BABYLON.CreateBox("cutter",{height:10,width:10,depth:10},scene)
+
+    var bottomcsg = new BABYLON.CSG.FromMesh(bottom)
+    var topcsg = new BABYLON.CSG.FromMesh(top)
+    var cuttercsg = new BABYLON.CSG.FromMesh(cutter)
+    var bottomcutted = bottomcsg.subtract(cuttercsg)
+    var topcutted = topcsg.subtract(cuttercsg)
+    var  bottomcuttedresult = bottomcutted.toMesh()
+    var  topcuttedresult = topcutted.toMesh()
+    top.dispose()
+    bottom.dispose()
+    cutter.dispose()
+    return scene;
+};
+----slasl
+ var pattno = 100
+    var x1=  -1000
+    var x2 = -992
+    for(var i=0 ; i<pattno ;  i++)
+    {   
+        var pattern1 = BABYLON.CreateTorus("side1",{diameter: 5 ,thickness:0.5,tessellation:50 },scene)
+        pattern1.scaling.x=2
+        pattern1.scaling.y=2
+        pattern1.position.x=x1
+
+        var pattern2 = BABYLON.CreateTorus("side2",{diameter: 5 ,thickness:0.5,tessellation:50 },scene)
+        pattern2.scaling.x=2
+        pattern2.scaling.y=2
+        pattern2.position.x=x2
+        pattern2.rotation.x =Math.PI/2
+        x1+=16
+        x2+=16
+    }
+    return scene;
+};
+---x o
+  var x1 = -5
+   var z1 = -6
+   var z1placeholder =-6
+   var nocube =3
+   for (var i = 0;i<nocube;i++ )
+   {
+       for(var j = 0; j<nocube; j++ )
+       {
+           var bluecube= BABYLON.CreateBox("ground",{size:5},scene)
+           bluecube.material= blue
+           bluecube.position = new BABYLON.Vector3(x1,0,z1)
+           z1 += 6
+       }
+       x1+=6
+       z1 = z1placeholder
+   }
+   var x2 = -5
+   var z2 = 6
+   var nox =2
+
+   for (var i = 0;i<nox;i++ )
+   {
+   var xhalf1 = BABYLON.CreateCylinder("x",{height: 4 , diameter :1},scene)
+   xhalf1.material = greanmaterial
+   xhalf1.position.y =3
+   xhalf1.rotation.x =Math.PI/2
+   xhalf1.rotation.y =Math.PI/4
+   xhalf1.position.x =x2
+   xhalf1.position.z =z2
+   var xhalf2 = BABYLON.CreateCylinder("x",{height: 4 , diameter :1 },scene)
+   xhalf2.material=  greanmaterial
+   xhalf2.position.y =3
+   xhalf2.rotation.x =Math.PI/2
+   xhalf2.rotation.y =-Math.PI/4
+   xhalf2.position.x =x2
+   xhalf2.position.z =z2
+   x2 += 6
+   z2-= 6
+   }
+    var x3 = -5
+    var z3 = 0
+    var noo =2
+   for (var i = 0;i<noo;i++ )
+   {
+   var o = BABYLON.CreateTorus("O",{diameter :3,thickness:1,tessellation:32},scene)
+   o.material=  redmaterial
+   o.position.y =3
+   o.position.x =x3
+   o.position.z =z3
+   x3 += 6
+   z3-= 6
+   }
+    
+    return scene;
+};
+-----chess
+ for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+            let cube = BABYLON.CreateBox("cube",{depth:1,height:0.1,width:1});
+            cube.material = (i+j)%2==0 ? black : white;
+            cube.position.x = (i-4) + 0.5;
+            cube.position.z = (j-4) + 0.5;
+            if(j < 3 && (i+j)%2==0){
+                let peice = new BABYLON.CreateCylinder("sh",{diameter:0.8,height:0.1});
+                peice.material = red;
+                peice.position.x = cube.position.x;
+                peice.position.z = cube.position.z;
+                peice.position.y = 0.1;
+            }
+            else if(j >= 5 && (i+j)%2!=0){
+                let peice = new BABYLON.CreateCylinder("sh",{diameter:0.8,height:0.1});
+                peice.material = black;
+                peice.position.x = cube.position.x;
+                peice.position.z = cube.position.z;
+                peice.position.y = 0.1;
+
+            }
+        }
+    }
+------last one 
+var createScene = function () {
+    var scene = new BABYLON.Scene(engine);
+
+    // Add lights and camera
+    var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+    var camera = new BABYLON.ArcRotateCamera("camera", Math.PI / 2, Math.PI / 4, 10, BABYLON.Vector3.Zero(), scene);
+    camera.attachControl(canvas, true);
+
+
+    // Create the sphere and cube meshes
+    var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", { diameter: 1.35, segments: 16 }, scene);
+    var cube = BABYLON.MeshBuilder.CreateBox("cube", scene);
+
+    // Create CSG objects from meshes
+    var csgSphere = BABYLON.CSG.FromMesh(sphere);
+    var csgCube = BABYLON.CSG.FromMesh(cube);
+
+    // Create the cylinders
+    var verticalCylinder = BABYLON.MeshBuilder.CreateCylinder("verticalCylinder", { height: 2, diameter: 0.4, tessellation: 16 }, scene);
+
+    var horizontalCylinder1 = BABYLON.MeshBuilder.CreateCylinder("horizontalCylinder1", { height: 2, diameter: 0.4, tessellation: 16 }, scene);
+    horizontalCylinder1.rotation.z = BABYLON.Tools.ToRadians(90);
+
+    var horizontalCylinder2 = BABYLON.MeshBuilder.CreateCylinder("horizontalCylinder2", { height: 2, diameter: 0.4, tessellation: 16 }, scene);
+    horizontalCylinder2.rotation.z = BABYLON.Tools.ToRadians(90);
+    horizontalCylinder2.rotation.y = BABYLON.Tools.ToRadians(90);
+
+    // Create CSG objects from cylinders
+    var csgVerticalCylinder = BABYLON.CSG.FromMesh(verticalCylinder);
+    var csgHorizontalCylinder1 = BABYLON.CSG.FromMesh(horizontalCylinder1);
+    var csgHorizontalCylinder2 = BABYLON.CSG.FromMesh(horizontalCylinder2);
+
+    // Perform unions using CSG
+    var component1 = csgCube.intersect(csgSphere)
+    var component2 = csgVerticalCylinder.union(csgHorizontalCylinder1).union(csgHorizontalCylinder2);
+    
+    var finalCSG = component1.subtract(component2);
+
+    // Convert the CSG result back to a mesh
+    var finalUnionMesh = finalCSG.toMesh("finalUnionMesh", null, scene);
+
+    // Dispose of original meshes (optional)
+    sphere.dispose();
+    cube.dispose();
+    verticalCylinder.dispose();
+    horizontalCylinder1.dispose();
+    horizontalCylinder2.dispose();
+
+    return scene;
+};
+----cas itail
+const createScene = function () {  
+
+    const scene = new BABYLON.Scene(engine)
+
+    const camera = new BABYLON.ArcRotateCamera("Camera", 3 * Math.PI / 4, Math.PI / 1.8, 25, BABYLON.Vector3.Zero(), scene);
+    camera.attachControl(canvas, true);
+    //Lights
+    const light1 = new BABYLON.PointLight("light1");
+    const  light2 = new BABYLON.PointLight("light2");
+    light1.position = new BABYLON.Vector3(100, 100, 100);
+    light2.position = new BABYLON.Vector3(-100, -100, -100);
+
+    const capsule1 = new BABYLON.MeshBuilder.CreateCapsule("capsule", {radiusBottom:1, height:20, radiusTop:5,tessellation:100});
+    const capsule2 = new BABYLON.MeshBuilder.CreateCapsule("capsule", {radiusBottom:0.9, height:18, radiusTop:4.5,tessellation:100});
+    var cap1csg = new BABYLON.CSG.FromMesh(capsule1)
+    var cap2csg = new BABYLON.CSG.FromMesh(capsule2)
+    var resultcsg = cap1csg.subtract(cap2csg)
+
+  
+    var cutter= new BABYLON.CreateBox("t",{size:10},scene);
+    cutter.position.y=7
+    var cuttercsg = new BABYLON.CSG.FromMesh(cutter)
+    resultcsg = resultcsg.subtract(cuttercsg)
+    var result = resultcsg.toMesh()
+    result.position.y=5
+        capsule2.dispose()
+    capsule1.dispose()
+    cutter.dispose()
+
+    // Base
+    var base = new BABYLON.CreateCylinder("t",{height:7,diameter:1.5},scene)
+    base.position.y=-6
+    var base1 = new BABYLON.CreateCylinder("t",{height:1,diameter:7},scene)
+    base1.position.y=-10
+
+    //ground
+
+     var mirror = BABYLON.Mesh.CreateBox("Mirror", 1.0, scene);
+     mirror.position.y=-10
+    mirror.scaling = new BABYLON.Vector3(100.0, 0.01, 100.0);
+    mirror.material = new BABYLON.StandardMaterial("mirror", scene);
+    mirror.material.diffuseTexture = new BABYLON.Texture("textures/amiga.jpg", scene);
+    mirror.material.diffuseTexture.uScale = 10;
+    mirror.material.diffuseTexture.vScale = 10;  
+      // Texture
+
+var sandMaterial = new BABYLON.StandardMaterial();
+var sandTexture = new BABYLON.Texture("textures/normal.png", scene);
+sandMaterial.diffuseTexture = sandTexture;
+
+result.material=sandMaterial
+base.material=sandMaterial
+
+//Shadows
+var shadowGenerator = new BABYLON.ShadowGenerator(2048, light1);
+	shadowGenerator.addShadowCaster(result);
+    shadowGenerator.addShadowCaster(base);
+	shadowGenerator.useExponentialShadowMap = true;
+
+	mirror.receiveShadows = true;
+
+    return scene;
+
+    
+};
+---pokimen
+
+var createScene = function () {
+    // This creates a basic Babylon Scene object (non-mesh)
+    var scene = new BABYLON.Scene(engine);
+
+    // This creates and positions a free camera (non-mesh)
+    var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(-10, 5, -1), scene);
+
+    // This targets the camera to scene origin
+    camera.setTarget(BABYLON.Vector3.Zero());
+
+    // This attaches the camera to the canvas
+    camera.attachControl(canvas, true);
+
+    // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
+    var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+
+    // Default intensity is 1. Let's dim the light a small amount
+    light.intensity = 0.7;
+
+    // Our built-in 'sphere' shape.
+    var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
+
+    // Move the sphere upward 1/2 its height
+    sphere.position.y = 1;
+    var mouth = BABYLON.MeshBuilder.CreateCylinder("mouth", {diameter: 2, height: 4 ,diameterTop:0 }, scene);
+    mouth.scaling.x=3
+    mouth.rotation.x =Math.PI/2
+    mouth.position.y=1
+    mouth.position.z=-1
+    var csgsphere = BABYLON.CSG.FromMesh(sphere);
+    var csgmouth = BABYLON.CSG.FromMesh(mouth);
+    var  pacman = csgsphere.subtract(csgmouth)
+    var finalpacman =pacman.toMesh("pacman",null,scene)
+    sphere.dispose();
+    mouth.dispose();
+
+
+
+  
+
+    return scene;
+};
+https://playground.babylonjs.com/#5VEC78     packman
+https://playground.babylonjs.com/#CL6HZ0#611   cas
+
