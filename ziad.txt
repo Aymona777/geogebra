@@ -59,3 +59,5 @@ scene.fogEnd = 50.0;
  scene.beforeRender = function(){
         myText.rotateAround (new BABYLON.Vector3(0 ,0,0) ,new BABYLON.Vector3(0 ,0,1) , -0.001 )
     }
+https://playground.babylonjs.com/#5VEC78     packman
+https://playground.babylonjs.com/#CL6HZ0#611   cas
