@@ -1,0 +1,73 @@
+  // Camera
+var camera = new BABYLON.ArcRotateCamera("camera1", Math.PI/2, Math.PI/2+0.2, -10, BABYLON.Vector3.Zero(), scene);
+
+
+  //3d Text
+var createScene = async function () {
+.......
+var fontData = await (await fetch("https://assets.babylonjs.com/fonts/Droid Sans_Regular.json")).json();
+var myText = BABYLON.MeshBuilder.CreateText("myText", "Hello World !! @ #$ % é", fontData, {
+size: 1,
+resolution: 64, 
+depth: 1
+});
+.......
+
+  //Rotation
+    var cyl;
+   for (var i=0;i<12;i++)
+   {
+cyl = new BABYLON.CreateCylinder();
+
+     cyl.setPivotMatrix(BABYLON.Matrix.Translation(0, 8, 0), false);
+     cyl.rotation.z=i*(Math.PI/6);
+or
+	cyl.position.y=8;
+     cyl.rotateAround (new BABYLON.Vector3(0 ,0,0) ,new BABYLON.Vector3(0 ,0,1) , i * Math.PI/6 )
+	
+   }
+
+https://playground.babylonjs.com/#GIF6VB#5
+
+  // Copy & Combine
+var shape2 = shape1.clone();
+var combined_shape = BABYLON.Mesh.MergeMeshes([shape1, shape2, shape3]);
+
+  // Texture
+https://doc.babylonjs.com/toolsAndResources/assetLibraries/availableTextures
+var sandMaterial = new BABYLON.StandardMaterial();
+var sandTexture = new BABYLON.Texture("textures/sand.jpg", scene);
+sandMaterial.diffuseTexture = sandTexture;
+shape.material=sandMaterial
+
+  // Fog
+scene.fogMode = BABYLON.Scene.FOGMODE_LINEAR;
+scene.fogColor = scene.clearColor;
+scene.fogStart = 20.0;
+scene.fogEnd = 50.0;
+
+  // Squares Ground
+    var mirror = BABYLON.Mesh.CreateBox("Mirror", 1.0, scene);
+    mirror.scaling = new BABYLON.Vector3(100.0, 0.01, 100.0);
+    mirror.material = new BABYLON.StandardMaterial("mirror", scene);
+    mirror.material.diffuseTexture = new BABYLON.Texture("textures/amiga.jpg", scene);
+    mirror.material.diffuseTexture.uScale = 10;
+    mirror.material.diffuseTexture.vScale = 10;
+
+ //Animate
+
+ scene.beforeRender = function(){
+        myText.rotateAround (new BABYLON.Vector3(0 ,0,0) ,new BABYLON.Vector3(0 ,0,1) , -0.001 )
+    }
+https://playground.babylonjs.com/#5VEC78     packman
+https://playground.babylonjs.com/#CL6HZ0#611   cas
+// loop
+ for(let i = 0  ; i < 50 ; i++){
+        for(let j = 0 ; j < 50; j++){
+            let box = BABYLON.CreateBox("box",{size : 1 , depth:  0.1});
+            box.material = (i+j)%2== 0 ? black : white;
+            box.position.x = (i-4)+0.5;
+            box.position.z = (j-4)+0.5;
+            box.rotation.x = Math.PI/2;
+        }
+    }
