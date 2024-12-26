@@ -97,15 +97,14 @@ babylon
 https://www.babylonjs-playground.com/#MLT3UJ#1  sa3a
 Babylon
 
-4-   https://playground.babylonjs.com/#8T8IWO
-5-a-  https://playground.babylonjs.com/#LXX2FZ
-5-b-  https://playground.babylonjs.com/#KG24MD
-5-c-    https://playground.babylonjs.com/#0ZZI41  
-5-d-    https://playground.babylonjs.com/#25892S
-5-e-   https://playground.babylonjs.com/#3XJ71A
-5-  f-  https://playground.babylonjs.com/#VHRNAN#1 
-7-a-  https://playground.babylonjs.com/#A6EUVU
-7-B -  https://playground.babylonjs.com/#D0Q1KG
+5-a-  https://playground.babylonjs.com/#LXX2FZ   stairs
+5-b-  https://playground.babylonjs.com/#KG24MD   cup 
+5-c-    https://playground.babylonjs.com/#0ZZI41  chmeisty
+5-d-    https://playground.babylonjs.com/#25892S   3 cube
+5-e-   https://playground.babylonjs.com/#3XJ71A    man 
+5-  f-  https://playground.babylonjs.com/#VHRNAN#1 android 
+7-a-  https://playground.babylonjs.com/#A6EUVU     slsla
+7-B -  https://playground.babylonjs.com/#D0Q1KG   slasl
  https://playground.babylonjs.com/#3W7IEX   x o
 7-d-  https://playground.babylonjs.com/#O0A1C6 chess
 7-e-
